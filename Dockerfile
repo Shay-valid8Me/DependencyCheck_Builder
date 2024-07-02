@@ -5,6 +5,9 @@ USER root
 # Install wget and other necessary utilities
 RUN apk add --no-cache wget tar gzip coreutils
 
+# Verify coreutils installation
+RUN dirname /usr/local
+
 # Download and install OpenJDK 11
 RUN wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz \
     && tar -xvf openjdk-11.0.2_linux-x64_bin.tar.gz \
