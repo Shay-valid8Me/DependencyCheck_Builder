@@ -3,7 +3,7 @@ FROM owasp/dependency-check:latest
 USER root
 
 # Install wget and other necessary utilities
-RUN apt-get update && apt-get install -y wget tar gzip && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache wget tar gzip
 
 # Download and install OpenJDK 11
 RUN wget https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_linux-x64_bin.tar.gz \
