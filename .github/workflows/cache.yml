@@ -15,14 +15,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: gh-pages
+          ref: main
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
       - name: update
         run: |
-          curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v5.1.1/vulnz-5.1.1.jar -s -L -o vulnz.jar
+          curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.1/vulnz-6.1.1.jar -s -L -o vulnz.jar
           git reset --soft HEAD~1
           ls -la .
           java -jar vulnz.jar cve --cache --directory ./nvd_cache  --threads=1 --debug --delay=8000
@@ -33,4 +33,4 @@ jobs:
           git config user.name "GitHub Actions"
           git add ./nvd_cache/
           git commit -am 'chore: update'
-          git push origin gh-pages --force
+          git push origin main --force
